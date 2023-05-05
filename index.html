@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="Game.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Choose your adventure.</title>
+</head>
+
+<body>
+    <div class="game">
+        <button class="custom-btn btn-1" id="play" onClick="playGame()">Ready to Play?</button>
+        <p id="demoPlay" class="demo hidden" style="display:none;">Choose your next move: slay the dragon, rescue the princess, or steal the wand.</p>
+        <div class="healthbar">
+            <p class="health">Health: <span id="health">100</span></p>
+        </div>
+        <button class="custom-btn btn-1" id="slay" onClick="slay" data-health-points="75">🐉 Slay the dragon</button>
+        <p id="demoSlay" class="demo hidden" style="display:none;">After a harrowing battle, you have successfully defeated the dragon. You took a lot of damage and lost 75 health points..</p>
+        <button class="custom-btn btn-1" id="rescue" onclick="rescue()" data-health-points="25">👸🏽 Rescue the princess</button>
+        <p id="demoRescue" class="demo hidden" style="display:none;">Ah, the princess! Unfortunately the princess is in another castle. You battle your way through goblins only to find a disappointing empty room and lose 25 health.</p>
+        <button class="custom-btn btn-1" id="wand" onclick="wand()" data-health-points="0">🧙‍♀️ Steal the magic wand</button>
+        <p id="demoWand" class="demo hidden" style="display:none;">The wand of power draws many to its charms. You traversed the mountains, stumbled through the woods, and discovered the chest containing the powerful weapon. You've lost no health, but the journey took 3 days.</p>
+        <button id="quit" class="custom-btn btn-1" onclick="quit()">☠️ Quit</button>
+        <p id="demoQuit" class="demo hidden" style="display:none;">You lose! Play again soon.</p>
+        <button id="reset" class="custom-btn btn-1" onclick="reset()">✨ Reset</button>
+        <p id="demoReset" class="demo hidden" style="display:none;">Your health has been reset to 100. Choose your next move.</p>
+        <p id="demoZero" class="demo hidden" style="display:none;">You do not have enough health points to continue. Reset to continue.</p>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            let healthPoints = 100;
+
+            function updateHealth() {
+                if ($("#demoSlay").is(":visible")) {
+                    healthPoints -= 75;
+                } else if ($("#demoRescue").is(":visible")) {
+                    healthPoints -= 25;
+                }
+
+                $(".health").html("Health: " + healthPoints);
+
+                if (healthPoints < 50) {
+                    $(".healthbar").css("background-color", "#FD7E14");
+                }
+
+                if (healthPoints < 25) {
+                    $(".healthbar").css("background-color", "red");
+                }
+
+                if (healthPoints <= 0) {
+                    $("#demoZero").show();
+                    $("button").not("#reset").prop("disabled", true);
+                }
+            }
+
+            $("#play").click(function() {
+                $(".demo:not(#demoPlay)").hide();
+                $("#demoPlay").show();
+            });
+
+            $("#slay").click(function() {
+                $(".demo:not(#demoSlay)").hide();
+                $("#demoSlay").show();
+                updateHealth();
+            });
+
+            $("#rescue").click(function() {
+                $(".demo:not(#demoRescue)").hide();
+                $("#demoRescue").show();
+                updateHealth();
+            });
+
+            $("#wand").click(function() {
+                $(".demo:not(#demoWand)").hide();
+                $("#demoWand").show();
+            });
+
+            $("#quit").click(function() {
+                $(".demo:not(#demoQuit)").hide();
+                $("#demoQuit").show();
+            });
+
+            $("#reset").click(function() {
+                $(".demo:not(#demoReset)").hide();
+                $("#demoReset").show();
+                healthPoints = 100;
+                $(".health").html("Health: " + healthPoints);
+                $(".healthbar").css("background-color", "green");
+                $("#demoZero").hide();
+                $("button").prop("disabled", false);
+            });
+        });
+    </script>
+</body>
+
+</html>

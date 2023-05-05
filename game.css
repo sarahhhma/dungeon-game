@@ -1,0 +1,134 @@
+body {
+    background-image: url('https://images.unsplash.com/photo-1515245589105-40c75250c2bf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-btn {
+    width: 270px;
+    height: 60px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+    margin: 5px;
+    text-align: center;
+}
+
+.btn-1 {
+    background: transparent;
+    background: linear-gradient(0deg, rgba(75, 105, 123, 0.2) 0%, rgba(127, 126, 133, 0.8) 100%);
+    border: none;
+}
+
+.btn-1:hover {
+    background: transparent;
+    background: linear-gradient(0deg, rgba(48, 41, 45, 0.2) 0%, rgba(100, 55, 62, 0.8) 100%);
+}
+
+.game {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    padding: 5%;
+    display: grid;
+    grid-template-columns: [col1] 5% [col2] 40% [col3] 10% [col4] 40% [col5] 5% [end];
+    grid-template-rows: [row1] 15% [row2] 15% [row3] 15% [row4] 15% [row5] 15% [row6] 15%;
+}
+
+#play {
+    font-weight: bold;
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row1;
+    grid-row-end: row2;
+    justify-self: center;
+}
+
+.healthbar {
+    background-color: #00cc0e;
+    height: 60px;
+    width: 270px;
+    font-weight: bold;
+    border-radius: 5px;
+    grid-column-start: col4;
+    grid-column-end: col5;
+    grid-row-start: row1;
+    grid-row-end: row2;
+    justify-self: center;
+    box-shadow: 5px 5px 5px #858585;
+}
+
+.health {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    top: 37%;
+}
+
+#slay {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row2;
+    grid-row-end: row3;
+    justify-self: center;
+}
+
+#rescue {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row3;
+    grid-row-end: row4;
+    justify-self: center;
+}
+
+#wand {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row4;
+    grid-row-end: row5;
+    justify-self: center;
+}
+
+#quit {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row6;
+    justify-self: center;
+}
+
+#reset {
+    grid-column-start: col2;
+    grid-column-end: col3;
+    grid-row-start: row5;
+    justify-self: center;
+}
+
+.demo {
+    display: none;
+    grid-column-start: col4;
+    grid-column-end: col5;
+    grid-row-start: row2;
+    grid-row-end: row5;
+    font-size: 1.5em;
+    background-color: rgba(48, 41, 45, 0.8);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #858585;
+    text-align: center;
+    margin: 0;
+    height: 300px;
+    padding: 10% 5%;
+}
